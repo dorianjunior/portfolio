@@ -13,7 +13,7 @@
 Host: sql204.infinityfree.com
 Usuário: if0_40676794
 Senha: tm6Pvl5ssv
-Database: if0_40676794_db_dorian (recomendado para o portfólio)
+Database: if0_40676794_db_dorian 
 ```
 
 ## 🚀 Passos para Deploy
@@ -31,7 +31,7 @@ cp .env.production .env
 ### 2. Upload via FTP
 
 **Credenciais FTP** (obter no painel InfinityFree):
-- Host: ftpupload.net (ou conforme painel)
+- Host: ftpupload.net 
 - Usuário: if0_40676794
 - Porta: 21
 
