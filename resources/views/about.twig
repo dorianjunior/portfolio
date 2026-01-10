@@ -1,0 +1,46 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Sobre Mim</h1>
+        <p>{{ description }}</p>
+    </div>
+</section>
+
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="bio-section">
+                <h2>Biografia</h2>
+                <p>{{ bio }}</p>
+            </div>
+
+            {% if experience %}
+            <div class="experience-section">
+                <h2>Experiência Profissional</h2>
+                {% for exp in experience %}
+                <div class="experience-item">
+                    <h3>{{ exp.title }}</h3>
+                    <p class="company">{{ exp.company }} | {{ exp.period }}</p>
+                    <p>{{ exp.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if education %}
+            <div class="education-section">
+                <h2>Formação Acadêmica</h2>
+                {% for edu in education %}
+                <div class="education-item">
+                    <h3>{{ edu.degree }}</h3>
+                    <p class="institution">{{ edu.institution }} | {{ edu.period }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

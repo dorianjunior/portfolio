@@ -1,0 +1,78 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Contato</h1>
+        <p>Entre em contato comigo. Responderei o mais breve possível!</p>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Informações de Contato</h2>
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <p>{{ contact.email }}</p>
+                </div>
+                {% if contact.phone %}
+                <div class="info-item">
+                    <strong>Telefone:</strong>
+                    <p>{{ contact.phone }}</p>
+                </div>
+                {% endif %}
+                {% if contact.location %}
+                <div class="info-item">
+                    <strong>Localização:</strong>
+                    <p>{{ contact.location }}</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="contact-form-wrapper">
+                {% if success %}
+                <div class="alert alert-success">
+                    {{ success }}
+                </div>
+                {% endif %}
+
+                {% if errors %}
+                <div class="alert alert-error">
+                    <ul>
+                        {% for error in errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <form class="contact-form" method="POST" action="/contato">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" value="{{ old.name|default('') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" value="{{ old.email|default('') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Assunto *</label>
+                        <input type="text" id="subject" name="subject" value="{{ old.subject|default('') }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" rows="5" required>{{ old.message|default('') }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

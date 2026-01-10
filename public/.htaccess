@@ -1,0 +1,45 @@
+# Habilita o módulo de reescrita de URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redireciona www para não-www (opcional)
+    # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # Força HTTPS (descomente se tiver SSL instalado)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Se a requisição não for para um arquivo ou diretório existente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Redireciona tudo para index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Configurações de segurança
+<IfModule mod_headers.c>
+    # Proteção contra clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Proteção XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Previne MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Desabilita listagem de diretórios
+Options -Indexes
+
+# Define index.php como arquivo padrão
+DirectoryIndex index.php
+
+# Configurações de PHP (se suportadas pelo servidor)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value memory_limit 256M
+    php_flag display_errors Off
+</IfModule>

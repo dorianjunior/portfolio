@@ -1,0 +1,47 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+<section class="project-detail">
+    <div class="container">
+        <a href="/projetos" class="back-link">&larr; Voltar para Projetos</a>
+        
+        <div class="project-header">
+            <h1>{{ project.title }}</h1>
+            <p class="project-date">{{ project.date|date("d/m/Y") }}</p>
+        </div>
+
+        <div class="project-image-large">
+            <img src="{{ project.image }}" alt="{{ project.title }}" onerror="this.src='/assets/img/default-project.jpg'">
+        </div>
+
+        <div class="project-details">
+            <div class="project-description-full">
+                <h2>Sobre o Projeto</h2>
+                <p>{{ project.fullDescription }}</p>
+            </div>
+
+            <div class="project-tech">
+                <h2>Tecnologias Utilizadas</h2>
+                <div class="tech-list">
+                    {% for tech in project.technologies %}
+                    <span class="tech-badge-large">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="project-actions">
+                {% if project.githubUrl %}
+                <a href="{{ project.githubUrl }}" target="_blank" class="btn btn-primary">
+                    Ver no GitHub
+                </a>
+                {% endif %}
+                {% if project.liveUrl %}
+                <a href="{{ project.liveUrl }}" target="_blank" class="btn btn-secondary">
+                    Ver Demo Online
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

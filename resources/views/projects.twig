@@ -1,0 +1,44 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Meus Projetos</h1>
+        <p>Confira alguns dos projetos que desenvolvi</p>
+    </div>
+</section>
+
+<section class="projects">
+    <div class="container">
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ project.image }}" alt="{{ project.title }}" onerror="this.src='/assets/img/default-project.jpg'">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="project-technologies">
+                        {% for tech in project.technologies %}
+                        <span class="tech-badge">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-links">
+                        <a href="/projetos/{{ project.slug }}" class="btn btn-small btn-primary">Ver Detalhes</a>
+                        {% if project.githubUrl %}
+                        <a href="{{ project.githubUrl }}" target="_blank" class="btn btn-small btn-secondary">GitHub</a>
+                        {% endif %}
+                        {% if project.liveUrl %}
+                        <a href="{{ project.liveUrl }}" target="_blank" class="btn btn-small btn-secondary">Demo</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>Nenhum projeto disponível no momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

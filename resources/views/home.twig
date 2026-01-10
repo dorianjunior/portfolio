@@ -1,0 +1,61 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Olá, eu sou <span class="highlight">Dorian Junior</span>
+            </h1>
+            <p class="hero-subtitle">Desenvolvedor Full Stack</p>
+            <p class="hero-description">
+                Transformo ideias em soluções digitais elegantes e funcionais.
+                Especializado em desenvolvimento web com PHP, JavaScript e frameworks modernos.
+            </p>
+            <div class="hero-buttons">
+                <a href="/projetos" class="btn btn-primary">Ver Projetos</a>
+                <a href="/contato" class="btn btn-secondary">Entre em Contato</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills">
+    <div class="container">
+        <h2 class="section-title">Minhas Habilidades</h2>
+        <div class="skills-grid">
+            {% for skill, level in skills %}
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">{{ skill }}</span>
+                    <span class="skill-level">{{ level }}%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: {{ level }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="social">
+    <div class="container">
+        <h2 class="section-title">Conecte-se Comigo</h2>
+        <div class="social-grid">
+            <a href="{{ social.github }}" target="_blank" class="social-card">
+                <h3>GitHub</h3>
+                <p>Veja meus repositórios</p>
+            </a>
+            <a href="{{ social.linkedin }}" target="_blank" class="social-card">
+                <h3>LinkedIn</h3>
+                <p>Conecte-se profissionalmente</p>
+            </a>
+            <a href="mailto:{{ social.email }}" class="social-card">
+                <h3>Email</h3>
+                <p>{{ social.email }}</p>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
