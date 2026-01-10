@@ -20,6 +20,9 @@ if (false !== $pos = strpos($uri, '?')) {
 }
 $uri = rawurldecode($uri);
 
+// Processar idioma da URL
+$uri = $config['languageMiddleware']->handle($uri);
+
 // Despachar rota
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 

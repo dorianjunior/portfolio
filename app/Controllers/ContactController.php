@@ -10,8 +10,8 @@ class ContactController extends Controller
     public function index(): string
     {
         $data = [
-            'title' => 'Contato',
-            'description' => 'Entre em contato comigo',
+            'title' => $this->trans('contact.title'),
+            'description' => $this->trans('contact.description'),
             'contact' => [
                 'email' => 'dorianc.vieira@gmail.com',
                 'phone' => '(48) 99186-9704',

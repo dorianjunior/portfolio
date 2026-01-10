@@ -14,8 +14,8 @@ class ProjectsController extends Controller
         $projects = Project::all();
 
         $data = [
-            'title' => 'Meus Projetos',
-            'description' => 'Confira alguns dos projetos que desenvolvi',
+            'title' => $this->trans('projects.title'),
+            'description' => $this->trans('projects.description'),
             'projects' => $projects,
         ];
 
@@ -33,8 +33,8 @@ class ProjectsController extends Controller
         if (!$project) {
             http_response_code(404);
             return $this->render('errors/404.twig', [
-                'title' => 'Projeto não encontrado',
-                'message' => 'O projeto que você está procurando não existe.'
+                'title' => $this->trans('errors.404_title'),
+                'message' => $this->trans('errors.404_description')
             ]);
         }
 

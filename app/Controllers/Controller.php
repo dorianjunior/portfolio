@@ -3,16 +3,30 @@
 namespace App\Controllers;
 
 use Twig\Environment;
+use App\Services\TranslationService;
+use App\Middleware\LanguageMiddleware;
 
 abstract class Controller
 {
     protected Environment $twig;
     protected array $env;
+    protected TranslationService $translator;
+    protected LanguageMiddleware $languageMiddleware;
 
     public function __construct(array $config)
     {
         $this->twig = $config['twig'];
         $this->env = $config['env'];
+        $this->translator = $config['translator'];
+        $this->languageMiddleware = $config['languageMiddleware'];
+    }
+    
+    /**
+     * Obtém uma tradução
+     */
+    protected function trans(string $key, array $replace = []): string
+    {
+        return $this->translator->get($key, $replace);
     }
 
     /**

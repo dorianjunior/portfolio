@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Início",
+    "projects": "Projetos",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "home": {
+    "title": "Início",
+    "welcome": "Olá, eu sou",
+    "role": "Desenvolvedor Full Stack",
+    "description": "Desenvolvedor Full Stack | PHP, JavaScript, Laravel",
+    "cta_projects": "Ver Projetos",
+    "cta_contact": "Entre em Contato",
+    "skills_title": "Minhas Habilidades",
+    "about_title": "Sobre Mim",
+    "about_text": "Desenvolvedor apaixonado por tecnologia e inovação, especializado em criar soluções web modernas e eficientes."
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Conheça alguns dos meus trabalhos",
+    "view_project": "Ver Projeto",
+    "view_code": "Ver Código",
+    "technologies": "Tecnologias",
+    "all_projects": "Todos os Projetos",
+    "no_projects": "Nenhum projeto encontrado"
+  },
+  "project_detail": {
+    "back": "Voltar aos Projetos",
+    "description": "Descrição",
+    "features": "Funcionalidades",
+    "technologies": "Tecnologias Utilizadas",
+    "links": "Links",
+    "view_live": "Ver Online",
+    "view_code": "Ver Código"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "description": "Conheça mais sobre minha trajetória",
+    "bio": "Desenvolvedor apaixonado por tecnologia e inovação...",
+    "experience_title": "Experiência Profissional",
+    "education_title": "Formação Acadêmica",
+    "present": "Presente"
+  },
+  "contact": {
+    "title": "Contato",
+    "description": "Entre em contato comigo",
+    "form_title": "Envie uma Mensagem",
+    "name": "Nome",
+    "name_placeholder": "Seu nome completo",
+    "email": "E-mail",
+    "email_placeholder": "seu@email.com",
+    "subject": "Assunto",
+    "subject_placeholder": "Assunto da mensagem",
+    "message": "Mensagem",
+    "message_placeholder": "Sua mensagem...",
+    "send": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar mensagem. Tente novamente.",
+    "info_title": "Informações de Contato",
+    "social_title": "Redes Sociais"
+  },
+  "footer": {
+    "description": "Desenvolvedor Full Stack apaixonado por criar soluções digitais.",
+    "quick_links": "Links Rápidos",
+    "social": "Redes Sociais",
+    "rights": "Todos os direitos reservados"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "close": "Fechar",
+    "read_more": "Ler Mais",
+    "language": "Idioma"
+  },
+  "errors": {
+    "404_title": "Página Não Encontrada",
+    "404_description": "A página que você está procurando não existe.",
+    "404_back": "Voltar à Página Inicial",
+    "500_title": "Erro no Servidor",
+    "500_description": "Ocorreu um erro interno. Tente novamente mais tarde."
+  }
+}

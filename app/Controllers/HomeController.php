@@ -10,8 +10,8 @@ class HomeController extends Controller
     public function index(): string
     {
         $data = [
-            'title' => 'Início',
-            'description' => 'Desenvolvedor Full Stack | PHP, JavaScript, Laravel',
+            'title' => $this->trans('home.title'),
+            'description' => $this->trans('home.description'),
             'skills' => [
                 'PHP' => 90,
                 'JavaScript' => 85,
@@ -36,9 +36,9 @@ class HomeController extends Controller
     public function about(): string
     {
         $data = [
-            'title' => 'Sobre Mim',
-            'description' => 'Conheça mais sobre minha trajetória',
-            'bio' => 'Desenvolvedor apaixonado por tecnologia e inovação...',
+            'title' => $this->trans('about.title'),
+            'description' => $this->trans('about.description'),
+            'bio' => $this->trans('about.bio'),
             'experience' => [
                 [
                     'title' => 'Desenvolvedor Full Stack',

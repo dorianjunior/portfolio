@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Hi, I'm",
+    "role": "Full Stack Developer",
+    "description": "Full Stack Developer | PHP, JavaScript, Laravel",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch",
+    "skills_title": "My Skills",
+    "about_title": "About Me",
+    "about_text": "Passionate developer about technology and innovation, specialized in creating modern and efficient web solutions."
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Check out some of my work",
+    "view_project": "View Project",
+    "view_code": "View Code",
+    "technologies": "Technologies",
+    "all_projects": "All Projects",
+    "no_projects": "No projects found"
+  },
+  "project_detail": {
+    "back": "Back to Projects",
+    "description": "Description",
+    "features": "Features",
+    "technologies": "Technologies Used",
+    "links": "Links",
+    "view_live": "View Live",
+    "view_code": "View Code"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Learn more about my journey",
+    "bio": "Passionate developer about technology and innovation...",
+    "experience_title": "Professional Experience",
+    "education_title": "Education",
+    "present": "Present"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Get in touch with me",
+    "form_title": "Send a Message",
+    "name": "Name",
+    "name_placeholder": "Your full name",
+    "email": "Email",
+    "email_placeholder": "your@email.com",
+    "subject": "Subject",
+    "subject_placeholder": "Message subject",
+    "message": "Message",
+    "message_placeholder": "Your message...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again.",
+    "info_title": "Contact Information",
+    "social_title": "Social Media"
+  },
+  "footer": {
+    "description": "Full Stack Developer passionate about creating digital solutions.",
+    "quick_links": "Quick Links",
+    "social": "Social Media",
+    "rights": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "read_more": "Read More",
+    "language": "Language"
+  },
+  "errors": {
+    "404_title": "Page Not Found",
+    "404_description": "The page you are looking for does not exist.",
+    "404_back": "Back to Home",
+    "500_title": "Server Error",
+    "500_description": "An internal error occurred. Please try again later."
+  }
+}

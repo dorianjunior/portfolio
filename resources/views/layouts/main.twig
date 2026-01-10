@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="{{ current_language }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ description|default('Portfólio de ' ~ app_name) }}">
-    <title>{{ title|default('Home') }} - {{ app_name }}</title>
+    <meta name="description" content="{{ description|default(trans('home.description')) }}">
+    <title>{{ title|default(trans('home.title')) }} - {{ app_name }}</title>
     
     {# Favicon #}
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
@@ -30,16 +30,33 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="/" class="logo">
+            <a href="{{ route('') }}" class="logo">
                 <img src="/assets/img/logo.png" alt="{{ app_name }}" class="logo-img">
                 <span class="logo-text">{{ app_name }}</span>
             </a>
             <ul class="nav-menu">
-                <li><a href="/" class="nav-link">Início</a></li>
-                <li><a href="/projetos" class="nav-link">Projetos</a></li>
-                <li><a href="/sobre" class="nav-link">Sobre</a></li>
-                <li><a href="/contato" class="nav-link">Contato</a></li>
+                <li><a href="{{ route('') }}" class="nav-link">{{ trans('nav.home') }}</a></li>
+                <li><a href="{{ route('projetos') }}" class="nav-link">{{ trans('nav.projects') }}</a></li>
+                <li><a href="{{ route('sobre') }}" class="nav-link">{{ trans('nav.about') }}</a></li>
+                <li><a href="{{ route('contato') }}" class="nav-link">{{ trans('nav.contact') }}</a></li>
             </ul>
+            
+            {# Seletor de idioma #}
+            <div class="language-selector">
+                <button class="language-btn" id="languageBtn">
+                    <i class="fas fa-globe"></i>
+                    <span>{{ current_language|upper }}</span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    {% for lang in available_languages %}
+                        <a href="/set-language/{{ lang }}" class="language-option {% if lang == current_language %}active{% endif %}">
+                            <span class="flag">{{ lang == 'pt' ? '🇧🇷' : (lang == 'en' ? '🇺🇸' : '🇪🇸') }}</span>
+                            <span>{{ lang == 'pt' ? 'Português' : (lang == 'en' ? 'English' : 'Español') }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            
             <button class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -57,19 +74,19 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>{{ app_name }}</h3>
-                    <p>Desenvolvedor Full Stack apaixonado por criar soluções digitais.</p>
+                    <p>{{ trans('footer.description') }}</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Links Rápidos</h3>
+                    <h3>{{ trans('footer.quick_links') }}</h3>
                     <ul>
-                        <li><a href="/">Início</a></li>
-                        <li><a href="/projetos">Projetos</a></li>
-                        <li><a href="/sobre">Sobre</a></li>
-                        <li><a href="/contato">Contato</a></li>
+                        <li><a href="{{ route('') }}">{{ trans('nav.home') }}</a></li>
+                        <li><a href="{{ route('projetos') }}">{{ trans('nav.projects') }}</a></li>
+                        <li><a href="{{ route('sobre') }}">{{ trans('nav.about') }}</a></li>
+                        <li><a href="{{ route('contato') }}">{{ trans('nav.contact') }}</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Redes Sociais</h3>
+                    <h3>{{ trans('footer.social') }}</h3>
                     <div class="social-links">
                         <a href="#" target="_blank">GitHub</a>
                         <a href="#" target="_blank">LinkedIn</a>
@@ -78,7 +95,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; {{ "now"|date("Y") }} {{ app_name }}. Todos os direitos reservados.</p>
+                <p>&copy; {{ "now"|date("Y") }} {{ app_name }}. {{ trans('footer.rights') }}.</p>
             </div>
         </div>
     </footer>
