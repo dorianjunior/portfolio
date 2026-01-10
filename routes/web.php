@@ -7,9 +7,6 @@ use FastRoute\RouteCollector;
 
 /** @var RouteCollector $r */
 
-// Rota raiz - redireciona para idioma padrão
-$r->addRoute('GET', '/', [HomeController::class, 'index']);
-
 // Rota de troca de idioma
 $r->addRoute('GET', '/set-language/{lang}', function($vars, $config) {
     $config['translator']->setLanguage($vars['lang']);
