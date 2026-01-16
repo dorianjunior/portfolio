@@ -22,12 +22,19 @@ class TranslationService
      */
     private function detectLanguage(): string
     {
-        // 1. Verifica cookie
+        // 1. Verifica idioma na URL (prioridade máxima)
+        $uri = $_SERVER['REQUEST_URI'] ?? '';
+        $parts = explode('/', trim($uri, '/'));
+        if (!empty($parts[0]) && $this->isValidLanguage($parts[0])) {
+            return $parts[0];
+        }
+
+        // 2. Verifica cookie
         if (isset($_COOKIE['language']) && $this->isValidLanguage($_COOKIE['language'])) {
             return $_COOKIE['language'];
         }
 
-        // 2. Verifica sessão
+        // 3. Verifica sessão
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -35,7 +42,7 @@ class TranslationService
             return $_SESSION['language'];
         }
 
-        // 3. Verifica Accept-Language do navegador
+        // 4. Verifica Accept-Language do navegador
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $browserLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
             if ($this->isValidLanguage($browserLang)) {
@@ -43,7 +50,7 @@ class TranslationService
             }
         }
 
-        // 4. Retorna idioma padrão
+        // 5. Retorna idioma padrão
         return $this->fallbackLanguage;
     }
 
