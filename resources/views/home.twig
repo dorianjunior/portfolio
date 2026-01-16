@@ -1,61 +1,189 @@
 {% extends "layouts/main.twig" %}
 
 {% block content %}
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Olá, eu sou <span class="highlight">Dorian Junior</span>
-            </h1>
-            <p class="hero-subtitle">Desenvolvedor Full Stack</p>
-            <p class="hero-description">
-                Transformo ideias em soluções digitais elegantes e funcionais.
-                Especializado em desenvolvimento web com PHP, JavaScript e frameworks modernos.
-            </p>
-            <div class="hero-buttons">
-                <a href="/projetos" class="btn btn-primary">Ver Projetos</a>
-                <a href="/contato" class="btn btn-secondary">Entre em Contato</a>
-            </div>
-        </div>
-    </div>
+<!-- Hero Section -->
+<section class="hero-modern bg-dark text-white py-5">
+	<div class="container">
+		<div class="row align-items-center min-vh-75">
+			<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+				<p class="text-primary fw-semibold mb-2">
+					<i class="fas fa-code me-2"></i>{{ trans('home.welcome') }}
+				</p>
+				<h1 class="display-3 fw-bold mb-3">
+					Dorian <span class="text-primary">Junior</span>
+				</h1>
+				<h2 class="h3 text-secondary mb-4">{{ trans('home.role') }}</h2>
+				<p class="lead mb-4 text-white-50">
+					{{ trans('home.about_text') }}
+				</p>
+				<div class="d-flex flex-wrap gap-3">
+					<a href="{{ route('projetos') }}" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow">
+						<i class="fas fa-folder-open me-2"></i>{{ trans('home.cta_projects') }}
+					</a>
+					<a href="{{ route('contato') }}" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+						<i class="fas fa-envelope me-2"></i>{{ trans('home.cta_contact') }}
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6 text-center" data-aos="fade-left">
+				<div class="hero-image-wrapper">
+					<div class="hero-shape-1"></div>
+					<div class="hero-shape-2"></div>
+					<img src="/assets/img/logo.png" alt="{{ app_name }}" class="img-fluid hero-logo" style="max-width: 400px;">
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
-<section class="skills">
-    <div class="container">
-        <h2 class="section-title">Minhas Habilidades</h2>
-        <div class="skills-grid">
-            {% for skill, level in skills %}
-            <div class="skill-item">
-                <div class="skill-header">
-                    <span class="skill-name">{{ skill }}</span>
-                    <span class="skill-level">{{ level }}%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: {{ level }}%"></div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+<!-- Skills Section -->
+<section class="py-5 bg-light">
+	<div class="container py-4">
+		<div class="row mb-5">
+			<div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+				<span class="badge bg-primary-subtle text-primary mb-3 px-3 py-2">
+					<i class="fas fa-code me-2"></i>{{ trans('home.skills_title') }}
+				</span>
+				<h2 class="display-5 fw-bold mb-3">{{ trans('home.skills_title') }}</h2>
+				<p class="lead text-muted">{{ trans('home.description') }}</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			{% for skill, level in skills %}
+			<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+				<div class="card border-0 shadow-sm h-100 hover-lift">
+					<div class="card-body p-4">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<h5 class="card-title mb-0 fw-bold">{{ skill }}</h5>
+							<span class="badge bg-primary fs-6">{{ level }}%</span>
+						</div>
+						<div class="progress" style="height: 8px;">
+							<div class="progress-bar bg-gradient" role="progressbar" style="width: {{ level }}%" aria-valuenow="{{ level }}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 </section>
 
-<section class="social">
-    <div class="container">
-        <h2 class="section-title">Conecte-se Comigo</h2>
-        <div class="social-grid">
-            <a href="{{ social.github }}" target="_blank" class="social-card">
-                <h3>GitHub</h3>
-                <p>Veja meus repositórios</p>
-            </a>
-            <a href="{{ social.linkedin }}" target="_blank" class="social-card">
-                <h3>LinkedIn</h3>
-                <p>Conecte-se profissionalmente</p>
-            </a>
-            <a href="mailto:{{ social.email }}" class="social-card">
-                <h3>Email</h3>
-                <p>{{ social.email }}</p>
-            </a>
-        </div>
-    </div>
+<!-- About Section -->
+<section class="py-5 bg-white">
+	<div class="container py-4">
+		<div class="row align-items-center">
+			<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+				<div class="about-image-wrapper position-relative">
+					<div class="about-shape bg-primary opacity-10 rounded-4"></div>
+					<img src="/assets/img/logo.png" alt="About" class="img-fluid rounded-4 shadow-lg position-relative">
+				</div>
+			</div>
+			<div class="col-lg-6" data-aos="fade-left">
+				<span class="badge bg-primary-subtle text-primary mb-3 px-3 py-2">
+					<i class="fas fa-user me-2"></i>{{ trans('home.about_title') }}
+				</span>
+				<h2 class="display-5 fw-bold mb-4">{{ trans('home.about_title') }}</h2>
+				<p class="lead text-muted mb-4">
+					{{ trans('home.about_text') }}
+				</p>
+				<div class="row g-4 mb-4">
+					<div class="col-6">
+						<div class="text-center p-3 bg-light rounded-3">
+							<i class="fas fa-project-diagram text-primary fs-2 mb-2"></i>
+							<h3 class="h5 fw-bold mb-0">10+</h3>
+							<p class="text-muted small mb-0">{{ trans('nav.projects') }}</p>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="text-center p-3 bg-light rounded-3">
+							<i class="fas fa-code text-primary fs-2 mb-2"></i>
+							<h3 class="h5 fw-bold mb-0">5+</h3>
+							<p class="text-muted small mb-0">{{ trans('home.skills_title') }}</p>
+						</div>
+					</div>
+				</div>
+				<a href="{{ route('sobre') }}" class="btn btn-dark btn-lg px-4 py-3 rounded-pill">
+					{{ trans('common.read_more') }} <i class="fas fa-arrow-right ms-2"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Social/Connect Section -->
+<section class="py-5 bg-dark text-white">
+	<div class="container py-4">
+		<div class="row mb-5">
+			<div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+				<span class="badge bg-primary mb-3 px-3 py-2">
+					<i class="fas fa-share-alt me-2"></i>{{ trans('contact.social_title') }}
+				</span>
+				<h2 class="display-5 fw-bold mb-3">{{ trans('home.cta_contact') }}</h2>
+				<p class="lead text-white-50">{{ trans('contact.description') }}</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+				<a href="{{ social.github }}" target="_blank" class="text-decoration-none">
+					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+						<div class="card-body text-center p-4">
+							<div class="social-icon-wrapper mb-3">
+								<i class="fab fa-github fs-1 text-primary"></i>
+							</div>
+							<h5 class="card-title fw-bold mb-2">GitHub</h5>
+							<p class="card-text text-white-50 mb-0">{{ trans('projects.view_code') }}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+				<a href="{{ social.linkedin }}" target="_blank" class="text-decoration-none">
+					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+						<div class="card-body text-center p-4">
+							<div class="social-icon-wrapper mb-3">
+								<i class="fab fa-linkedin-in fs-1 text-primary"></i>
+							</div>
+							<h5 class="card-title fw-bold mb-2">LinkedIn</h5>
+							<p class="card-text text-white-50 mb-0">{{ trans('contact.social_title') }}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+				<a href="mailto:{{ social.email }}" class="text-decoration-none">
+					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+						<div class="card-body text-center p-4">
+							<div class="social-icon-wrapper mb-3">
+								<i class="fas fa-envelope fs-1 text-primary"></i>
+							</div>
+							<h5 class="card-title fw-bold mb-2">Email</h5>
+							<p class="card-text text-white-50 mb-0 small">{{ social.email }}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white">
+	<div class="container py-4">
+		<div class="row align-items-center" data-aos="zoom-in">
+			<div class="col-lg-8 text-center text-lg-start mb-4 mb-lg-0">
+				<h2 class="display-6 fw-bold mb-2">{{ trans('home.cta_projects') }}</h2>
+				<p class="lead mb-0 opacity-90">{{ trans('projects.description') }}</p>
+			</div>
+			<div class="col-lg-4 text-center text-lg-end">
+				<a href="{{ route('projetos') }}" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow">
+					<i class="fas fa-arrow-right me-2"></i>{{ trans('projects.all_projects') }}
+				</a>
+			</div>
+		</div>
+	</div>
 </section>
 {% endblock %}
