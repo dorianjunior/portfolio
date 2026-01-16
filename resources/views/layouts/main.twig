@@ -18,97 +18,207 @@
 		<link href="/assets/css/style.css" rel="stylesheet"> {% block styles %}{% endblock %}
 		</head>
 		<body>
-			<nav class="navbar navbar-expand-lg">
-				<div class="container-fluid">
-					<a href="{{ route('') }}" class="navbar-brand">
-						<img src="/assets/img/logo.png" alt="{{ app_name }}" width="90" height="72">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+				<div class="container-fluid px-4 px-lg-5">
+					<a href="{{ route('') }}" class="navbar-brand d-flex align-items-center py-2">
+						<img src="/assets/img/logo.png" alt="{{ app_name }}" height="45" class="logo-brand"> 
+						<span class="logo-text">{{ app_name }}</span>
 					</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
-						<ul class="navbar-nav">
+					<div class="d-flex align-items-center order-lg-2">
+						<div class="dropdown me-2">
+							<button class="btn btn-sm btn-outline-light rounded-pill px-3" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fas fa-globe me-1"></i>
+								<span class="fw-semibold">{{ current_language|upper }}</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2" aria-labelledby="langDropdown">
+								{% for lang in available_languages %}
+									<li>
+										<a class="dropdown-item {{ lang == current_language ? 'active' : '' }} d-flex align-items-center py-2" href="{{ switch_language(lang) }}">
+											<span class="fs-5 me-2">{{ lang == 'pt' ? '🇧🇷' : (lang == 'en' ? '🇺🇸' : '🇪🇸') }}</span>
+											<span>{{ lang == 'pt' ? 'Português' : (lang == 'en' ? 'English' : 'Español') }}</span>
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+
+						<button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse order-lg-1" id="navbarContent">
+						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ route('') }}">{{ trans('nav.home') }}</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('sobre') }}">{{ trans('nav.about') }}</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('contato') }}">{{ trans('nav.contact') }}</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									{{ trans('nav.projects') }}
+								<a class="nav-link px-lg-3 py-2 {{ page_id|default('') == 'home' ? 'active' : '' }}" href="{{ route('') }}">
+									<i class="fas fa-home me-2 d-lg-none"></i>{{ trans('nav.home') }}
 								</a>
-								<ul class="dropdown-menu">
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link px-lg-3 py-2 {{ page_id|default('') == 'about' ? 'active' : '' }}" href="{{ route('sobre') }}">
+									<i class="fas fa-user me-2 d-lg-none"></i>{{ trans('nav.about') }}
+								</a>
+							</li>
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle px-lg-3 py-2 {{ page_id|default('') == 'projects' ? 'active' : '' }}" href="#" id="projectsMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="fas fa-folder-open me-2 d-lg-none"></i>{{ trans('nav.projects') }}
+								</a>
+								<ul class="dropdown-menu shadow-lg border-0 mt-lg-2" aria-labelledby="projectsMenu">
 									<li>
-										<a class="dropdown-item" href="{{ route('projetos') }}">{{ trans('nav.projects') }}</a>
+										<a class="dropdown-item py-2" href="{{ route('projetos') }}">
+											<i class="fas fa-th me-2"></i>{{ trans('nav.projects') }}
+										</a>
+									</li>
+									<li><hr class="dropdown-divider my-1"></li>
+									<li>
+										<a class="dropdown-item py-2" href="{{ route('apirest') }}">
+											<i class="fas fa-code me-2"></i>{{ trans('nav.apirest') }}
+										</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="{{ route('apirest') }}">{{ trans('nav.apirest') }}</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="{{ route('gestao') }}">{{ trans('nav.gestao') }}</a>
+										<a class="dropdown-item py-2" href="{{ route('gestao') }}">
+											<i class="fas fa-tasks me-2"></i>{{ trans('nav.gestao') }}
+										</a>
 									</li>
 								</ul>
 							</li>
-						</ul>
-					</div>
 
-
-					{# Seletor de idioma #}
-					<div class="language-selector">
-						<button class="language-btn" id="languageBtn">
-							<i class="fas fa-globe"></i>
-							<span>{{ current_language|upper }}</span>
-						</button>
-						<div class="language-dropdown" id="languageDropdown">
-							{% for lang in available_languages %}
-								<a href="{{ switch_language(lang) }}" class="language-option {% if lang == current_language %}active{% endif %}">
-									<span class="flag">{{ lang == 'pt' ? '🇧🇷' : (lang == 'en' ? '🇺🇸' : '🇪🇸') }}</span>
-									<span>{{ lang == 'pt' ? 'Português' : (lang == 'en' ? 'English' : 'Español') }}</span>
+							<li class="nav-item">
+								<a class="nav-link px-lg-3 py-2 {{ page_id|default('') == 'contact' ? 'active' : '' }}" href="{{ route('contato') }}">
+									<i class="fas fa-envelope me-2 d-lg-none"></i>{{ trans('nav.contact') }}
 								</a>
-							{% endfor %}
-						</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</nav>
+
+			<!-- Spacer for fixed navbar -->
+			<div style="height: 76px;"></div>
 
 			<main>
 				{% block content %}{% endblock %}
 			</main>
 
-			<footer class="footer">
+			<footer class="bg-dark text-light pt-5 pb-3 mt-auto">
 				<div class="container">
-					<div class="footer-content">
-						<div class="footer-section">
-							<h3>{{ app_name }}</h3>
-							<p>{{ trans('footer.description') }}</p>
-						</div>
-						<div class="footer-section">
-							<h3>{{ trans('footer.quick_links') }}</h3>
-							<ul>
-								<li><ahref="{{route('')}}">{{ trans('nav.home') }}</a></li>
-								<li><ahref="{{route('projetos')}}">{{ trans('nav.projects') }}</a></li>
-								<li><ahref="{{route('sobre')}}">{{ trans('nav.about') }}</a></li>
-								<li><ahref="{{route('contato')}}">{{ trans('nav.contact') }}</a></li>
-							</ul>
-						</div>
-						<div class="footer-section">
-							<h3>{{ trans('footer.social') }}</h3>
-							<div class="social-links">
-								<a href="#" target="_blank">GitHub</a>
-								<a href="#" target="_blank">LinkedIn</a>
-								<a href="mailto:dorianc.vieira@gmail.com">Email</a>
+					<div class="row g-4 pb-4">
+						<div class="col-lg-4 col-md-6">
+							<div class="d-flex align-items-center mb-3">
+								<img src="/assets/img/logo.png" alt="{{ app_name }}" height="40" class="me-2">
+								<h5 class="mb-0 fw-bold">{{ app_name }}</h5>
+							</div>
+							<p class="text-light opacity-75 mb-3">
+								{{ trans('footer.description') }}
+							</p>
+							<div class="d-flex gap-2">
+							<a href="#" target="_blank" class="btn btn-outline-light btn-sm rounded-circle d-inline-flex justify-content-center align-items-center shrink-0" style="width: 40px; height: 40px; min-width: 40px; padding: 0;" title="GitHub">
+								<i class="fab fa-github"></i>
+							</a>
+							<a href="#" target="_blank" class="btn btn-outline-light btn-sm rounded-circle d-inline-flex justify-content-center align-items-center shrink-0" style="width: 40px; height: 40px; min-width: 40px; padding: 0;" title="LinkedIn">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+							<a href="mailto:dorianc.vieira@gmail.com" class="btn btn-outline-light btn-sm rounded-circle d-inline-flex justify-content-center align-items-center shrink-0" style="width: 40px; height: 40px; min-width: 40px; padding: 0;" title="Email">
+									<i class="fas fa-envelope"></i>
+								</a>
 							</div>
 						</div>
+						<div class="col-lg-3 col-md-6">
+							<h5 class="fw-bold mb-3 text-uppercase" style="font-size: 0.95rem; letter-spacing: 1px;">
+								<i class="fas fa-link me-2"></i>{{ trans('footer.quick_links') }}
+							</h5>
+							<ul class="list-unstyled">
+								<li class="mb-2">
+									<a href="{{ route('') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.home') }}
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="{{ route('sobre') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.about') }}
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="{{ route('projetos') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.projects') }}
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="{{ route('contato') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.contact') }}
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<h5 class="fw-bold mb-3 text-uppercase" style="font-size: 0.95rem; letter-spacing: 1px;">
+								<i class="fas fa-folder-open me-2"></i>{{ trans('nav.projects') }}
+							</h5>
+							<ul class="list-unstyled">
+								<li class="mb-2">
+									<a href="{{ route('projetos') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.projects') }}
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="{{ route('apirest') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.apirest') }}
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="{{ route('gestao') }}" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>
+										{{ trans('nav.gestao') }}
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-lg-2 col-md-6">
+							<h5 class="fw-bold mb-3 text-uppercase" style="font-size: 0.95rem; letter-spacing: 1px;">
+								<i class="fas fa-info-circle me-2"></i>{{ trans('footer.social') }}
+							</h5>
+							<ul class="list-unstyled">
+								<li class="mb-2">
+									<a href="mailto:dorianc.vieira@gmail.com" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fas fa-envelope me-2"></i>
+										<small>Email</small>
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="#" target="_blank" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fab fa-github me-2"></i>
+										<small>GitHub</small>
+									</a>
+								</li>
+								<li class="mb-2">
+									<a href="#" target="_blank" class="text-light text-decoration-none opacity-75 d-inline-flex align-items-center">
+										<i class="fab fa-linkedin-in me-2"></i>
+										<small>LinkedIn</small>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
-					<div class="footer-bottom">
-						<p>&copy;
-							{{ "now"|date("Y") }}
-							{{ app_name }}.
-							{{ trans('footer.rights') }}.</p>
+					<hr class="border-secondary opacity-25 my-4">
+					<div class="row">
+						<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+							<p class="mb-0 text-light opacity-75">
+								<i class="far fa-copyright me-1"></i>
+								{{ "now"|date("Y") }} <strong>{{ app_name }}</strong>. {{ trans('footer.rights') }}.
+							</p>
+						</div>
+						<div class="col-md-6 text-center text-md-end">
+							<p class="mb-0 text-light opacity-75">
+								<i class="fas fa-code me-1"></i> Made with <i class="fas fa-heart text-danger mx-1"></i> by Dorian Junior
+							</p>
+						</div>
 					</div>
 				</div>
 			</footer>
@@ -116,7 +226,6 @@
 			<script src="/assets/libs/bootstrap/bootstrap.bundle.min.js"></script>
 			<script src="/assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
 			<script src="/assets/js/script.js"></script>
-
 			{% block scripts %}{% endblock %}
 		</body>
 	</html>
