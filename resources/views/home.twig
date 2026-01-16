@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-modern bg-dark text-white py-5">
+<section class="hero-modern hero-section py-5">
 	<div class="container">
 		<div class="row align-items-center min-vh-75">
 			<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
@@ -12,15 +12,15 @@
 				<h1 class="display-3 fw-bold mb-3">
 					Dorian <span class="text-primary">Junior</span>
 				</h1>
-				<h2 class="h3 text-secondary mb-4">{{ trans('home.role') }}</h2>
-				<p class="lead mb-4 text-white-50">
+				<h2 class="h3 hero-subtitle mb-4">{{ trans('home.role') }}</h2>
+				<p class="lead mb-4 hero-description">
 					{{ trans('home.about_text') }}
 				</p>
 				<div class="d-flex flex-wrap gap-3">
 					<a href="{{ route('projetos') }}" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow">
 						<i class="fas fa-folder-open me-2"></i>{{ trans('home.cta_projects') }}
 					</a>
-					<a href="{{ route('contato') }}" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+					<a href="{{ route('contato') }}" class="btn btn-outline-primary btn-lg px-4 py-3 rounded-pill hero-btn-outline">
 						<i class="fas fa-envelope me-2"></i>{{ trans('home.cta_contact') }}
 					</a>
 				</div>
@@ -37,22 +37,22 @@
 </section>
 
 <!-- Skills Section -->
-<section class="py-5 bg-light">
+<section class="py-5 skills-section">
 	<div class="container py-4">
 		<div class="row mb-5">
 			<div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-				<span class="badge bg-primary-subtle text-primary mb-3 px-3 py-2">
+				<span class="badge badge-theme mb-3 px-3 py-2">
 					<i class="fas fa-code me-2"></i>{{ trans('home.skills_title') }}
 				</span>
 				<h2 class="display-5 fw-bold mb-3">{{ trans('home.skills_title') }}</h2>
-				<p class="lead text-muted">{{ trans('home.description') }}</p>
+				<p class="lead section-description">{{ trans('home.description') }}</p>
 			</div>
 		</div>
 
 		<div class="row g-4">
 			{% for skill, level in skills %}
 			<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
-				<div class="card border-0 shadow-sm h-100 hover-lift">
+				<div class="card card-theme border-0 shadow-sm h-100 hover-lift">
 					<div class="card-body p-4">
 						<div class="d-flex justify-content-between align-items-center mb-3">
 							<h5 class="card-title mb-0 fw-bold">{{ skill }}</h5>
@@ -70,7 +70,7 @@
 </section>
 
 <!-- About Section -->
-<section class="py-5 bg-white">
+<section class="py-5 about-section">
 	<div class="container py-4">
 		<div class="row align-items-center">
 			<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
@@ -80,30 +80,30 @@
 				</div>
 			</div>
 			<div class="col-lg-6" data-aos="fade-left">
-				<span class="badge bg-primary-subtle text-primary mb-3 px-3 py-2">
+				<span class="badge badge-theme mb-3 px-3 py-2">
 					<i class="fas fa-user me-2"></i>{{ trans('home.about_title') }}
 				</span>
 				<h2 class="display-5 fw-bold mb-4">{{ trans('home.about_title') }}</h2>
-				<p class="lead text-muted mb-4">
+				<p class="lead section-description mb-4">
 					{{ trans('home.about_text') }}
 				</p>
 				<div class="row g-4 mb-4">
 					<div class="col-6">
-						<div class="text-center p-3 bg-light rounded-3">
+						<div class="text-center p-3 stats-card rounded-3">
 							<i class="fas fa-project-diagram text-primary fs-2 mb-2"></i>
 							<h3 class="h5 fw-bold mb-0">10+</h3>
-							<p class="text-muted small mb-0">{{ trans('nav.projects') }}</p>
+							<p class="stats-label small mb-0">{{ trans('nav.projects') }}</p>
 						</div>
 					</div>
 					<div class="col-6">
-						<div class="text-center p-3 bg-light rounded-3">
+						<div class="text-center p-3 stats-card rounded-3">
 							<i class="fas fa-code text-primary fs-2 mb-2"></i>
 							<h3 class="h5 fw-bold mb-0">5+</h3>
-							<p class="text-muted small mb-0">{{ trans('home.skills_title') }}</p>
+							<p class="stats-label small mb-0">{{ trans('home.skills_title') }}</p>
 						</div>
 					</div>
 				</div>
-				<a href="{{ route('sobre') }}" class="btn btn-dark btn-lg px-4 py-3 rounded-pill">
+				<a href="{{ route('sobre') }}" class="btn btn-primary btn-lg px-4 py-3 rounded-pill">
 					{{ trans('common.read_more') }} <i class="fas fa-arrow-right ms-2"></i>
 				</a>
 			</div>
@@ -112,7 +112,7 @@
 </section>
 
 <!-- Social/Connect Section -->
-<section class="py-5 bg-dark text-white">
+<section class="py-5 social-section">
 	<div class="container py-4">
 		<div class="row mb-5">
 			<div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
@@ -120,20 +120,20 @@
 					<i class="fas fa-share-alt me-2"></i>{{ trans('contact.social_title') }}
 				</span>
 				<h2 class="display-5 fw-bold mb-3">{{ trans('home.cta_contact') }}</h2>
-				<p class="lead text-white-50">{{ trans('contact.description') }}</p>
+				<p class="lead social-description">{{ trans('contact.description') }}</p>
 			</div>
 		</div>
 
 		<div class="row g-4">
 			<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
 				<a href="{{ social.github }}" target="_blank" class="text-decoration-none">
-					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+					<div class="card card-social h-100 hover-lift">
 						<div class="card-body text-center p-4">
 							<div class="social-icon-wrapper mb-3">
 								<i class="fab fa-github fs-1 text-primary"></i>
 							</div>
 							<h5 class="card-title fw-bold mb-2">GitHub</h5>
-							<p class="card-text text-white-50 mb-0">{{ trans('projects.view_code') }}</p>
+							<p class="card-text social-text mb-0">{{ trans('projects.view_code') }}</p>
 						</div>
 					</div>
 				</a>
@@ -141,13 +141,13 @@
 
 			<div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
 				<a href="{{ social.linkedin }}" target="_blank" class="text-decoration-none">
-					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+					<div class="card card-social h-100 hover-lift">
 						<div class="card-body text-center p-4">
 							<div class="social-icon-wrapper mb-3">
 								<i class="fab fa-linkedin-in fs-1 text-primary"></i>
 							</div>
 							<h5 class="card-title fw-bold mb-2">LinkedIn</h5>
-							<p class="card-text text-white-50 mb-0">{{ trans('contact.social_title') }}</p>
+							<p class="card-text social-text mb-0">{{ trans('contact.social_title') }}</p>
 						</div>
 					</div>
 				</a>
@@ -155,13 +155,13 @@
 
 			<div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
 				<a href="mailto:{{ social.email }}" class="text-decoration-none">
-					<div class="card bg-transparent border-light text-white h-100 hover-lift">
+					<div class="card card-social h-100 hover-lift">
 						<div class="card-body text-center p-4">
 							<div class="social-icon-wrapper mb-3">
 								<i class="fas fa-envelope fs-1 text-primary"></i>
 							</div>
 							<h5 class="card-title fw-bold mb-2">Email</h5>
-							<p class="card-text text-white-50 mb-0 small">{{ social.email }}</p>
+							<p class="card-text social-text mb-0 small">{{ social.email }}</p>
 						</div>
 					</div>
 				</a>
