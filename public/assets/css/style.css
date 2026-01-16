@@ -5,10 +5,15 @@
    NAVBAR
    ================================== */
 
+.logo-brand {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .logo-text {
-    font-family: 'Monoton', cursive;
+    font-family: 'Barlow-Bold', sans-serif;
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--light-color);
     margin-left: 0.5rem;
 }
 
