@@ -10,6 +10,7 @@ class ContactController extends Controller
     public function index(): string
     {
         $data = [
+            'page_id' => 'contact',
             'title' => $this->trans('contact.title'),
             'description' => $this->trans('contact.description'),
             'contact' => [
