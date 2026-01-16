@@ -3,7 +3,9 @@
     "home": "Início",
     "projects": "Projetos",
     "about": "Sobre",
-    "contact": "Contato"
+    "contact": "Contato",
+    "apirest": "API REST",
+    "gestao": "Sistema de Gestão"
   },
   "home": {
     "title": "Início",
