@@ -26,6 +26,13 @@
 }
 
 @font-face {
+    font-family: "Barlow-Bold";
+    src:
+        local("Barlow-Bold"),
+        url("../fonts/Barlow-Bold.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "Monoton";
     src:
         local("Monoton-Regular"),
