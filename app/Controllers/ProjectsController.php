@@ -14,6 +14,7 @@ class ProjectsController extends Controller
         $projects = Project::all();
 
         $data = [
+            'page_id' => 'projects',
             'title' => $this->trans('projects.title'),
             'description' => $this->trans('projects.description'),
             'projects' => $projects,
@@ -39,6 +40,7 @@ class ProjectsController extends Controller
         }
 
         $data = [
+            'page_id' => 'projects',
             'title' => $project->title,
             'description' => $project->description,
             'project' => $project,
