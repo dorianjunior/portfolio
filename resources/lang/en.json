@@ -3,7 +3,9 @@
     "home": "Home",
     "projects": "Projects",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "apirest": "REST API",
+    "gestao": "Management System"
   },
   "home": {
     "title": "Home",
