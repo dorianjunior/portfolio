@@ -18,13 +18,16 @@
 		<link href="/assets/css/style.css" rel="stylesheet"> {% block styles %}{% endblock %}
 		</head>
 		<body>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" id="mainNavbar">
 				<div class="container-fluid px-4 px-lg-5">
 					<a href="{{ route('') }}" class="navbar-brand d-flex align-items-center py-2">
 						<img src="/assets/img/logo.png" alt="{{ app_name }}" height="45" class="logo-brand"> 
 						<span class="logo-text d-none d-md-block">{{ app_name }}</span>
 					</a>
 					<div class="d-flex align-items-center order-lg-2">
+						<button id="themeToggle" class="btn btn-sm btn-outline-light rounded-circle me-2" type="button" title="Toggle Theme" style="width: 38px; height: 38px; padding: 0;">
+							<i class="fas fa-sun" id="themeIcon"></i>
+						</button>
 						<div class="dropdown me-2">
 							<button class="btn btn-sm btn-outline-light rounded-pill px-3" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
 								<i class="fas fa-globe me-1"></i>
@@ -101,7 +104,7 @@
 				{% block content %}{% endblock %}
 			</main>
 
-			<footer class="bg-dark text-light pt-5 pb-3 mt-auto">
+		<footer class="custom-footer text-light pt-5 pb-3 mt-auto">
 				<div class="container">
 					<div class="row g-4 pb-4">
 						<div class="col-lg-4 col-md-6">
