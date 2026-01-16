@@ -10,6 +10,7 @@ class HomeController extends Controller
     public function index(): string
     {
         $data = [
+            'page_id' => 'home',
             'title' => $this->trans('home.title'),
             'description' => $this->trans('home.description'),
             'skills' => [
@@ -36,6 +37,7 @@ class HomeController extends Controller
     public function about(): string
     {
         $data = [
+            'page_id' => 'about',
             'title' => $this->trans('about.title'),
             'description' => $this->trans('about.description'),
             'bio' => $this->trans('about.bio'),
