@@ -39,6 +39,16 @@ $twig->addGlobal('current_language', $translator->getCurrentLanguage());
 $twig->addGlobal('available_languages', $translator->getAvailableLanguages());
 $twig->addGlobal('app_name', $_ENV['APP_NAME'] ?? 'Portfolio');
 
+// Adicionar função para trocar idioma mantendo a rota atual
+$twig->addFunction(new TwigFunction('switch_language', function (string $newLang) use ($languageMiddleware) {
+    $currentPath = $_SERVER['REQUEST_URI'] ?? '/';
+    // Remove query string
+    if (false !== $pos = strpos($currentPath, '?')) {
+        $currentPath = substr($currentPath, 0, $pos);
+    }
+    return $languageMiddleware->switchLanguage($newLang, $currentPath);
+}));
+
 return [
     'twig' => $twig,
     'env' => $_ENV,
