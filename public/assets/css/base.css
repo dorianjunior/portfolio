@@ -5,11 +5,65 @@
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
+    --border-radius: 10px;
+    --transition: all 0.3s ease;
+}
+
+/* Light Theme (Default) */
+:root,
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #e2e8f0;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    
+    /* Navbar & Footer */
+    --navbar-bg: #1e293b;
+    --navbar-text: #f8fafc;
+    --navbar-hover: #3b82f6;
+    --footer-bg: #0f172a;
+    --footer-text: #e2e8f0;
+    --footer-heading: #3b82f6;
+    
+    /* Legacy support */
     --dark-color: #1e293b;
     --light-color: #f8fafc;
     --text-color: #334155;
-    --border-radius: 10px;
-    --transition: all 0.3s ease;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-light: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+    --card-bg: #1e293b;
+    
+    /* Navbar & Footer */
+    --navbar-bg: #020617;
+    --navbar-text: #f1f5f9;
+    --navbar-hover: #60a5fa;
+    --footer-bg: #000000;
+    --footer-text: #cbd5e1;
+    --footer-heading: #60a5fa;
+    
+    /* Legacy support */
+    --dark-color: #0f172a;
+    --light-color: #1e293b;
+    --text-color: #e2e8f0;
 }
 
 * {
@@ -41,8 +95,9 @@
 
 body {
     font-family: "Barlow", sans-serif;
-    background: var(--light-color);
-    color: var(--text-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     line-height: 1.6;
     scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
