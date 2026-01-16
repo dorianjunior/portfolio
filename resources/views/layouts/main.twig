@@ -4,28 +4,18 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="{{ description|default(trans('home.description')) }}">
-		<title>{{ title|default(trans('home.title')) }}
-			-
-			{{ app_name }}</title>
+		<title>{{ title|default(trans('home.title')) }} - {{ app_name }}</title>
 
-		{# Favicon #}
 		<link rel="icon" type="image/x-icon" href="/assets/img/favicon/favicon.ico">
 		<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
 		<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
-		<link
-		rel="manifest" href="/assets/img/favicon/site.webmanifest">
+		<link rel="manifest" href="/assets/img/favicon/site.webmanifest">
 
-		{# Bootstrap CSS #}
-		<link
-		href="/assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-
-		{# Font Awesome Icons #}
-		<link
-		rel="stylesheet" href="/assets/libs/fontawesome/css/all.min.css">
-
-		{# Seu CSS customizado #}
-		<link rel="stylesheet" href="/assets/css/style.css"> {% block styles %}{% endblock %}
+		<link href="/assets/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/libs/fontawesome/css/all.min.css" rel="stylesheet">
+		<link href="/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+		<link href="/assets/css/style.css" rel="stylesheet"> {% block styles %}{% endblock %}
 		</head>
 		<body>
 			<nav class="navbar navbar-expand-lg">
@@ -75,7 +65,7 @@
 						</button>
 						<div class="language-dropdown" id="languageDropdown">
 							{% for lang in available_languages %}
-								<a href="/set-language/{{ lang }}" class="language-option {% if lang == current_language %}active{% endif %}">
+								<a href="{{ switch_language(lang) }}" class="language-option {% if lang == current_language %}active{% endif %}">
 									<span class="flag">{{ lang == 'pt' ? '🇧🇷' : (lang == 'en' ? '🇺🇸' : '🇪🇸') }}</span>
 									<span>{{ lang == 'pt' ? 'Português' : (lang == 'en' ? 'English' : 'Español') }}</span>
 								</a>
@@ -123,10 +113,8 @@
 				</div>
 			</footer>
 
-			{# Bootstrap Bundle (inclui Popper) #}
 			<script src="/assets/libs/bootstrap/bootstrap.bundle.min.js"></script>
-
-			{# Seu JS customizado #}
+			<script src="/assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
 			<script src="/assets/js/script.js"></script>
 
 			{% block scripts %}{% endblock %}
