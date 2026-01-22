@@ -47,33 +47,44 @@ class Project
     {
         return [
             new self([
-                'title' => 'Sistema de E-commerce',
-                'description' => 'Plataforma completa de e-commerce com carrinho, pagamentos e painel administrativo.',
-                'fullDescription' => 'Sistema completo de e-commerce desenvolvido em PHP com Laravel, incluindo integração com gateway de pagamento, gestão de estoque, painel administrativo completo e área do cliente.',
-                'technologies' => ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'JavaScript'],
-                'image' => '/assets/img/projects/ecommerce.jpg',
-                'githubUrl' => 'https://github.com/seu-usuario/ecommerce',
-                'liveUrl' => 'https://demo-ecommerce.com',
-                'date' => '2023-06-15'
+                'title' => 'App Super Gestão',
+                'description' => 'Sistema de gestão empresarial',
+                'fullDescription' => 'Sistema web desenvolvido com Laravel 9 que oferece controle total sobre operações empresariais, incluindo gerenciamento de fornecedores, cadastro e controle de produtos, gestão de múltiplas filiais com preços diferenciados, base de clientes, formulário de contato público e painel administrativo com dashboard e estatísticas em tempo real. Conta com sistema de autenticação seguro e interface responsiva.',
+                'technologies' => ['Laravel 9', 'PHP 8.2+', 'MySQL', 'Bootstrap', 'JavaScript', 'Blade Templates', 'Eloquent ORM', 'Authentication'],
+                'image' => '/assets/img/projects/app_super_gestao.png',
+                'githubUrl' => 'https://github.com/dorianjunior/app_super_gestao',
+                'liveUrl' => '#',
+                'date' => '2022-07-15'
             ]),
             new self([
-                'title' => 'API RESTful',
-                'description' => 'API REST completa com autenticação JWT e documentação Swagger.',
-                'fullDescription' => 'API RESTful desenvolvida seguindo as melhores práticas, com autenticação JWT, documentação interativa com Swagger, testes automatizados e deploy em Docker.',
-                'technologies' => ['PHP', 'Slim Framework', 'JWT', 'MySQL', 'Docker'],
-                'image' => '/assets/img/projects/api.jpg',
-                'githubUrl' => 'https://github.com/seu-usuario/api-rest',
-                'date' => '2023-09-20'
+                'title' => 'Site MMGarden',
+                'description' => 'Site institucional para a empresa MMGarden.',
+                'fullDescription' => 'Site institucional para a empresa MMGarden, com informações sobre produtos e serviços.',
+                'technologies' => ['Vue.js', 'HTML5', 'CSS3', 'JavaScript', 'SEO', 'Google Ads', 'Vercel'],
+                'image' => '/assets/img/projects/mmgarden.png',
+                'githubUrl' => 'https://github.com/dorianjunior/mmgarden',
+                'liveUrl' => 'https://mmgarden.com.br',
+                'date' => '2024-05-13'
             ]),
             new self([
-                'title' => 'Sistema de Gestão',
-                'description' => 'Sistema de gestão empresarial com módulos de CRM, vendas e relatórios.',
-                'fullDescription' => 'Sistema completo de gestão empresarial com módulos integrados de CRM, controle de vendas, gestão de clientes, relatórios gerenciais e dashboard interativo.',
-                'technologies' => ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'Chart.js'],
-                'image' => '/assets/img/projects/gestao.jpg',
-                'githubUrl' => 'https://github.com/seu-usuario/sistema-gestao',
-                'liveUrl' => 'https://demo-gestao.com',
-                'date' => '2023-11-10'
+                'title' => 'Site AJS Fogões',
+                'description' => 'Site institucional para a empresa AJS Fogões.',
+                'fullDescription' => 'Site institucional para a empresa AJS Fogões, com informações sobre produtos e serviços.',
+                'technologies' => ['HTML5', 'CSS3', 'JavaScript', 'SEO', 'Google Ads', 'Vercel'],
+                'image' => '/assets/img/projects/ajsfogoes.png',
+                'githubUrl' => 'https://github.com/dorianjunior/ajsfogoes',
+                'liveUrl' => 'https://ajsfogoes.com.br',
+                'date' => '2022-06-05'
+            ]),
+            new self([
+                'title' => 'Site Amamentação Florianópolis',
+                'description' => 'Site institucional para a empresa Amamentação Florianópolis.',
+                'fullDescription' => 'Site institucional para a empresa Amamentação Florianópolis, com informações sobre cursos e serviços para mães e bebês.',
+                'technologies' => ['Vue.js', 'HTML5', 'CSS3', 'JavaScript', 'SEO', 'Vercel'],
+                'image' => '/assets/img/projects/amamentacao.png',
+                'githubUrl' => 'https://github.com/dorianjunior/amamentacao',
+                'liveUrl' => 'https://amamentacaoflorianopolis.com.br',
+                'date' => '2025-08-23'
             ]),
         ];
     }
