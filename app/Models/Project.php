@@ -53,7 +53,7 @@ class Project
                 'technologies' => ['Laravel 9', 'PHP 8.2+', 'MySQL', 'Bootstrap', 'JavaScript', 'Blade Templates', 'Eloquent ORM', 'Authentication'],
                 'image' => '/assets/img/projects/app_super_gestao.png',
                 'githubUrl' => 'https://github.com/dorianjunior/app_super_gestao',
-                'liveUrl' => '#',
+                'liveUrl' => 'https://appsupergestao.infinityfree.me/',
                 'date' => '2022-07-15'
             ]),
             new self([
